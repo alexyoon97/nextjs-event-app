@@ -1,11 +1,12 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import styles from "@/styles/Home.module.css";
+import Link from "next/link";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function Home({ data }) {
   return (
     <>
       <Head>
@@ -16,39 +17,30 @@ export default function Home() {
       </Head>
       <header>
         <nav>
-          <img/>
-          <a href='/'> Home</a>
-          <a href='/events'> Events</a>
-          <a href='/about-us'> About us</a>
+          <Link legacyBehavior href="/" passHref>
+            <a> Home</a>
+          </Link>
+          <Link legacyBehavior href="/events" passHref>
+            <a> Events</a>
+          </Link>
+          <Link legacyBehavior href="/about-us" passHref>
+            <a> About us</a>
+          </Link>
         </nav>
       </header>
-      <main className={styles.main}>
-       <div>
-        <img/>
-        <h2>Events in London</h2>
-        <p>
-          this is a paragaph for the events in london
-        </p>
-       </div>
-       <div>
-        <img/>
-        <h2>Events in Vancouver</h2>
-        <p>
-          this is a paragaph for the events in Vancouver
-        </p>
-       </div>
-       <div>
-        <img/>
-        <h2>Events in Barcelona</h2>
-        <p>
-          this is a paragaph for the events in Barcelona
-        </p>
-       </div>
-      </main>
+      <main className={styles.main}></main>
 
       <footer className={styles.footer}>
         <p> 2023 3/2</p>
       </footer>
     </>
-  )
+  );
 }
+// export async function getServerSideProps() {
+//   const { events_categories } = await import("../../data/data.json");
+//   return {
+//     props: {
+//       data: events_categories ,
+//     },
+//   };
+// }

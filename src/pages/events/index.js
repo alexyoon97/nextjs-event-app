@@ -1,24 +1,27 @@
-const Page = () => {
+import Link from "next/link";
+
+const EventsPage = ({data}) => {
     return (
       <div>
         <h1>Events Page</h1>
         <div>
-          <a href="">
-            <img />
-            <h2>Events in London</h2>
-          </a>
-          <a href="">
-            <img />
-            <h2>Events in Vancouver</h2>
-          </a>
-          <a href="">
-            <img />
-            <h2>Events in Barcelona</h2>
-          </a>
+        { data.map(ev => 
+        <Link key={ev.id} href={`/events/${ev.id}`} passHref={true}>
+          <h2>{ev.title}</h2>
+        </Link>
+       )}
         </div>
       </div>
     );
   };
-  
-  export default Page;
+export default EventsPage;
+
+export async function getServerSideProps() {
+    const { events_categories } = await import("../../../data/data.json");
+    return {
+      props: {
+        data: events_categories ,
+      },
+    };
+  }
   
