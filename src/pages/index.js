@@ -3,6 +3,8 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
+import { Footer } from "@/components/footer/footer";
+import { Header } from "@/components/header/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,24 +17,9 @@ export default function Home({ data }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header>
-        <nav>
-          <Link legacyBehavior href="/" passHref>
-            <a> Home</a>
-          </Link>
-          <Link legacyBehavior href="/events" passHref>
-            <a> Events</a>
-          </Link>
-          <Link legacyBehavior href="/about-us" passHref>
-            <a> About us</a>
-          </Link>
-        </nav>
-      </header>
       <main className={styles.main}></main>
 
-      <footer className={styles.footer}>
-        <p> 2023 3/2</p>
-      </footer>
+
     </>
   );
 }
